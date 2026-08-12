@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eclipse 12 agosto 2026 · Cabo de Palos</title>
+<style>
+:root{
+  --bg:#070b17; --panel:#10182b; --panel2:#151f36; --text:#f5f7ff;
+  --muted:#aeb9d4; --accent:#ffd54a; --cyan:#64d8ff; --danger:#ff6b6b;
+  --ok:#68e0a5; --line:#263452;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; color:var(--text); font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  background:
+    radial-gradient(circle at 75% 15%,#283b76 0,transparent 28%),
+    radial-gradient(circle at 15% 85%,#172c58 0,transparent 30%),var(--bg);
+  min-height:100vh;
+}
+.wrap{max-width:1180px;margin:auto;padding:22px}
+header{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:18px}
+h1{font-size:clamp(28px,4vw,48px);margin:0 0 5px;letter-spacing:-1.5px}
+.subtitle{color:var(--muted);font-size:15px}
+.clock{font-variant-numeric:tabular-nums;text-align:right;font-size:26px;font-weight:750}
+.date{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
+.card{background:linear-gradient(145deg,rgba(21,31,54,.96),rgba(11,17,32,.96));border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 18px 50px #0005}
+.hero{min-height:500px;display:flex;flex-direction:column;justify-content:space-between}
+.badge{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:#24324f;color:#dbe5ff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.7px}
+.badge.partial{background:#3a2c19;color:#ffd976}
+.badge.safe{background:#173b30;color:#8ff0c1}
+.mainphase{font-size:18px;color:var(--muted);margin-top:15px}
+.count{font-size:clamp(55px,9vw,105px);font-weight:850;letter-spacing:-5px;line-height:1;font-variant-numeric:tabular-nums;margin:10px 0}
+.next{font-size:18px}.next strong{color:var(--accent)}
+.progress{height:9px;background:#222e49;border-radius:99px;overflow:hidden;margin-top:15px}
+.progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--accent));border-radius:99px}
+.visual{height:235px;position:relative;display:grid;place-items:center;overflow:hidden;border-radius:18px;background:radial-gradient(circle,#202b4d,#0b1020 65%)}
+.sun{width:155px;height:155px;border-radius:50%;background:radial-gradient(circle,#fff9c4 0 20%,#ffd84b 45%,#ff9c18 72%,#ff5a00 100%);box-shadow:0 0 35px 13px #ffb52b88}
+.moon{position:absolute;width:151px;height:151px;border-radius:50%;background:#070b17;box-shadow:-8px 0 10px #0009;transform:translateX(0);border:1px solid #303b57}
+.hint{position:absolute;bottom:10px;left:12px;right:12px;text-align:center;color:#9eabc8;font-size:11px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.metric{background:#0c1324;border:1px solid var(--line);border-radius:15px;padding:12px}
+.metric b{display:block;font-size:21px;font-variant-numeric:tabular-nums}.metric span{font-size:11px;color:var(--muted)}
+.timeline{display:grid;gap:8px;margin-top:13px}
+.row{display:grid;grid-template-columns:60px 1fr auto;gap:10px;align-items:center;padding:11px 12px;border:1px solid var(--line);border-radius:14px;background:#0c1324}
+.row.active{border-color:var(--accent);box-shadow:0 0 0 1px #ffd54a22 inset}
+.row .time{font-weight:800;font-variant-numeric:tabular-nums}.row small{color:var(--muted)}
+.row em{font-style:normal;color:#8ff0c1;font-size:11px}
+.notice{border:1px solid #744040;background:#2a171c;color:#ffd4d4;border-radius:17px;padding:14px;margin-top:15px;line-height:1.45}
+.notice strong{color:#fff}
+.buttons{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+button{border:0;border-radius:13px;padding:11px 14px;font-weight:800;color:#07101c;background:var(--accent);cursor:pointer}
+button.secondary{background:#24324f;color:#edf2ff}
+button.danger{background:#ff7777}
+button:active{transform:translateY(1px)}
+details{margin-top:15px}.source{margin-top:10px;padding:10px 0;border-top:1px solid var(--line)}
+a{color:#8fe2ff}
+footer{color:#8290ad;font-size:11px;text-align:center;padding:20px 0}
+.test{border:1px dashed #5d6f97}
+.testlog{min-height:34px;color:#a9b7d5;font-size:12px;margin-top:8px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}.clock{text-align:left}.hero{min-height:auto}.metrics{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <div class="badge partial">☀️ Eclipse parcial · 12 agosto 2026</div>
+    <h1>Cabo de Palos</h1>
+    <div class="subtitle">Cartagena · Región de Murcia · hora local CEST (UTC+2)</div>
+  </div>
+  <div>
+    <div id="clock" class="clock">--:--:--</div>
+    <div id="date" class="date"></div>
+  </div>
+</header>
+
+<div class="grid">
+<section class="card hero">
+  <div>
+    <div class="badge safe">🛡️ Seguridad: gafas durante todo el eclipse</div>
+    <div id="phase" class="mainphase">Preparando…</div>
+    <div id="count" class="count">--:--:--</div>
+    <div id="next" class="next">Siguiente hito: <strong>—</strong></div>
+    <div class="progress"><i id="bar"></i></div>
+  </div>
+
+  <div>
+    <div class="visual">
+      <div class="sun"></div><div id="moon" class="moon"></div>
+      <div class="hint">Visualización conceptual · no está a escala astronómica</div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><b>97,9%</b><span>magnitud publicada para Puerto Cabo de Palos</span></div>
+      <div class="metric"><b>19:41</b><span>C1 · inicio parcial</span></div>
+      <div class="metric"><b>20:35</b><span>máximo</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <div class="badge">⏱️ Secuencia local</div>
+  <h2 style="margin:10px 0 5px">Hitos de observación</h2>
+  <div class="subtitle">No hay C2/C3 en Cabo de Palos: la totalidad no es visible aquí.</div>
+
+  <div class="timeline" id="timeline"></div>
+
+  <div class="notice">
+    <strong>⚠️ Importante:</strong> Cabo de Palos queda fuera de la franja de totalidad.
+    Por tanto, <strong>no existe un intervalo C2–C3</strong> desde esta ubicación.
+    No debes quitarte las gafas de eclipse en ningún momento mientras el Sol sea visible.
+  </div>
+
+  <div class="buttons">
+    <button id="sound">🔊 Activar sonido</button>
+    <button id="voice" class="secondary">🗣️ Activar voz</button>
+    <button id="test" class="secondary">🧪 Modo test</button>
+  </div>
+  <div id="testlog" class="testlog"></div>
+
+  <details>
+    <summary><strong>Fuentes y contraste</strong></summary>
+    <div class="source">
+      <strong>IGN / Astronomía:</strong> identifica Murcia como zona de eclipse parcial y ofrece las tablas oficiales por municipio.
+      <br><a href="https://astronomia.ign.es/eclipses-de-sol-y-luna/eclipse-total-sol-de-12-de-agosto-2026" target="_blank">IGN · Eclipse total de 12/08/2026</a>
+    </div>
+    <div class="source">
+      <strong>NASA/GSFC (Fred Espenak):</strong> confirma el eclipse total global, su trayectoria y los elementos de cálculo; la franja de totalidad no alcanza Cabo de Palos.
+      <br><a href="https://eclipse.gsfc.nasa.gov/SEsearch/SEsearchmap.php?Ecl=20260812" target="_blank">NASA/GSFC · mapa y cálculo del eclipse</a>
+      · <a href="https://eclipse.gsfc.nasa.gov/SEpath/SEpath2001/SE2026Aug12Tpath.html" target="_blank">NASA/GSFC · trayectoria de totalidad</a>
+    </div>
+    <div class="source">
+      <strong>Contraste independiente local:</strong> Timeanddate, para Puerto Cabo de Palos, publica inicio 19:41, máximo 20:35 y final 20:59, con magnitud 0,979. Se usa como contraste local, no como sustituto de IGN/NASA.
+      <br><a href="https://www.timeanddate.com/eclipse/in/@11979680?iso=20260812" target="_blank">Timeanddate · Puerto Cabo de Palos</a>
+    </div>
+    <div class="source">
+      <strong>Nota de precisión:</strong> las fuentes consultadas publican aquí los tiempos locales a nivel de minuto para este punto. La app no fabrica segundos que no estén publicados.
+    </div>
+  </details>
+</section>
+</div>
+
+<footer>
+Eclipse 2026 · Cabo de Palos · La aplicación es un asistente de tiempos y avisos, no sustituye las recomendaciones oficiales de seguridad ocular.
+</footer>
+</div>
+
+<script>
+const events = [
+  {key:'C1', label:'Inicio del eclipse parcial', t:'2026-08-12T19:41:00+02:00'},
+  {key:'MAX', label:'Máximo · 97,9%', t:'2026-08-12T20:35:00+02:00'},
+  {key:'C4', label:'Fin del eclipse parcial', t:'2026-08-12T20:59:00+02:00'}
+];
+const testEvents = [
+  {key:'C1', label:'TEST · inicio', ms:15000},
+  {key:'MAX', label:'TEST · máximo', ms:30000},
+  {key:'C4', label:'TEST · fin', ms:50000}
+];
+
+let audioEnabled=false, voiceEnabled=false, testMode=false, testStart=0, fired={};
+
+const $ = id => document.getElementById(id);
+const fmt = s => {
+  s=Math.max(0,Math.round(s));
+  const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;
+  return [h,m,sec].map((x,i)=>i===0?String(x).padStart(2,'0'):String(x).padStart(2,'0')).join(':');
+};
+function speak(text){
+  if(!voiceEnabled || !('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text); u.lang='es-ES'; u.rate=.92; u.pitch=1;
+  speechSynthesis.speak(u);
+}
+function beep(){
+  if(!audioEnabled) return;
+  const C=window.AudioContext||window.webkitAudioContext; if(!C)return;
+  const ctx=new C(),o=ctx.createOscillator(),g=ctx.createGain();
+  o.frequency.value=720; o.type='sine'; g.gain.setValueAtTime(.0001,ctx.currentTime);
+  g.gain.exponentialRampToValueAtTime(.18,ctx.currentTime+.02);
+  g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.35);
+  o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+.38);
+}
+function announce(id,text){
+  if(fired[id]) return; fired[id]=true; beep(); speak(text);
+}
+function renderTimeline(now){
+  $('timeline').innerHTML=events.map(e=>`
+    <div class="row" id="row-${e.key}">
+      <div class="time">${e.t.slice(11,16)}</div><div>${e.label}<br><small>${e.key}</small></div>
+      <em>${now>=new Date(e.t)?'pasado':'programado'}</em>
+    </div>`).join('');
+}
+renderTimeline(new Date());
+
+function realLoop(){
+  const now=new Date();
+  $('clock').textContent=now.toLocaleTimeString('es-ES');
+  $('date').textContent=now.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const times=events.map(e=>new Date(e.t).getTime());
+  let phase='Antes del eclipse', next=events[0], countSec=(times[0]-now.getTime())/1000, pct=0;
+  if(now>=times[0]&&now<times[1]){phase='Eclipse parcial en curso';next=events[1];countSec=(times[1]-now)/1000;pct=(now-times[0])/(times[2]-times[0])*100}
+  else if(now>=times[1]&&now<times[2]){phase='Máximo del eclipse parcial';next=events[2];countSec=(times[2]-now)/1000;pct=(now-times[0])/(times[2]-times[0])*100}
+  else if(now>=times[2]){phase='Eclipse finalizado';next=null;countSec=0;pct=100}
+  $('phase').textContent=phase;
+  $('count').textContent=fmt(countSec);
+  $('next').innerHTML=next?`Siguiente hito: <strong>${next.key} · ${next.t.slice(11,16)}</strong>`:'Eclipse terminado';
+  $('bar').style.width=Math.min(100,Math.max(0,pct))+'%';
+  // Conceptual moon travel across the solar disk, reaching near-total cover at maximum.
+  const p=Math.min(1,Math.max(0,(now-times[0])/(times[2]-times[0])));
+  const x=(p*2-1)*78;
+  $('moon').style.transform=`translateX(${x}px)`;
+  if(times[0]-now.getTime()<=60000 && times[0]>now.getTime()) announce('c1-1','El eclipse comienza en menos de un minuto. Ponte tus gafas de eclipse certificadas antes de mirar al Sol.');
+  if(Math.abs(now.getTime()-times[1])<1000) announce('max','Máximo del eclipse parcial. El Sol no está totalmente cubierto en Cabo de Palos. Mantén las gafas puestas.');
+  if(times[2]-now.getTime()<=60000 && times[2]>now.getTime()) announce('c4-1','El eclipse está terminando. Sigue usando protección ocular hasta que el Sol deje de ser visible.');
+}
+function testLoop(){
+  const elapsed=(Date.now()-testStart);
+  const e1=15000,e2=30000,e3=50000;
+  $('clock').textContent='MODO TEST';
+  let phase='Prueba preparada',count=0,next='C1';
+  if(elapsed<e1){phase='TEST · antes de C1';count=(e1-elapsed)/1000;next='C1'}
+  else if(elapsed<e2){phase='TEST · eclipse parcial';count=(e2-elapsed)/1000;next='MAX';announce('t1','Inicio de eclipse parcial (prueba).')}
+  else if(elapsed<e3){phase='TEST · máximo';count=(e3-elapsed)/1000;next='C4';announce('t2','Máximo del eclipse parcial (prueba). Mantén la protección ocular.')}
+  else {phase='TEST · final';count=0;next='—';announce('t3','Fin del eclipse (prueba). La prueba ha terminado.')}
+  $('phase').textContent=phase;$('count').textContent=fmt(count);
+  $('next').innerHTML=`Siguiente hito: <strong>${next}</strong>`;
+  $('bar').style.width=Math.min(100,elapsed/e3*100)+'%';
+  $('testlog').textContent='Prueba acelerada: C1 a 15 s · máximo a 30 s · C4 a 50 s. Activa sonido y voz para comprobar ambos.';
+}
+setInterval(()=>testMode?testLoop():realLoop(),250);
+realLoop();
+
+$('sound').onclick=()=>{audioEnabled=!audioEnabled;$('sound').textContent=audioEnabled?'🔊 Sonido activado':'🔇 Activar sonido';if(audioEnabled)beep()};
+$('voice').onclick=()=>{voiceEnabled=!voiceEnabled;$('voice').textContent=voiceEnabled?'🗣️ Voz activada':'🗣️ Activar voz';if(voiceEnabled)speak('Avisos de voz activados en español.')};
+$('test').onclick=()=>{
+  testMode=!testMode; fired={}; testStart=Date.now(); $('test').textContent=testMode?'⏹️ Detener test':'🧪 Modo test';
+  $('testlog').textContent=testMode?'Test iniciado.':'Test detenido.';
+};
+</script>
+</body>
+</html>
